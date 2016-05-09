@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open%20Sans:300,400,600,700,800">
+    <link rel="stylesheet" href="../css/calc.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="../dist/jquery.calculatorJS-0.1.1.js"></script>
+    <meta charset="UTF-8">
+    <title>CalculatorJS</title>
+</head>
+<body>
+
+<div class="container-calc"></div>
+
+<script>
+    if (window.jQuery) {
+        $(document).ready(function ($) {
+            $('.container-calc').calc({
+               // additionalButtons: [".", "-"] //Opportunity to add additional buttons('-' or '.')....
+            });
+        });
+    } else {
+        alert("Please, connect to the internet, for jQuery library import!");
+    }
+</script>
+</body>
+</html>
