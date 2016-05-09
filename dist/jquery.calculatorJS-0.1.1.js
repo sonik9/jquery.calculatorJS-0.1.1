@@ -16,6 +16,8 @@
         textClass:"text",
         //css class for calc buttons
         buttonClass:"button",
+        //error message text
+        errorMessage:'You can\'t calc something without digits!',
         additionalButtons:[]
     }
 
@@ -76,15 +78,19 @@
         var _this=this;
         var str = text.find('p');
         button.click(function (e) {
-            if(button.html()!='=') {
-                //debugger;
-                if(str.css('text-align')==='left') {
-                    str.append(button.html());
-                }else{
-                    str.css({'text-align':''}).html(button.html());
+            if(button.html()==='+'&& (str.html().length<1 || str.css('text-align') === 'right')){
+                alert(_this.config.errorMessage);
+            }else {
+                if (button.html() != '=') {
+                    //debugger;
+                    if (str.css('text-align') === 'left') {
+                        str.append(button.html());
+                    } else {
+                        str.css({'text-align': ''}).html(button.html());
+                    }
+                } else {
+                    str.html(_this.calculate(str.html())).css({'text-align': 'right'});
                 }
-            }else{
-                str.html(_this.calculate(str.html())).css({'text-align':'right'});
             }
         });
         return button;
