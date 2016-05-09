@@ -19,7 +19,7 @@
         //error message text
         errorMessage:'You can\'t calc something without digits!',
         additionalButtons:[]
-    }
+    };
 
     /**
      * function - constructor calculator plugin
@@ -39,7 +39,7 @@
      */
     Calc.prototype.init= function () {
         this.container.append(this.createView());
-    }
+    };
 
     /**
      * Creation calculator form
@@ -56,16 +56,15 @@
             });
         }
         var button = function (i) {
-            var element = $('<div/>',{'class':_this.config.buttonClass}).html(i);
-            return element;
-        }
+            return $('<div/>', {'class': _this.config.buttonClass}).html(i);
+        };
         calcPanel.append(text);
         $.each(symbols,function (i,item) {
 
            calcPanel.append( _this.buttonEventClickDigit(text,button(item)));
         });
         return calcPanel;
-    }
+    };
 
     /**
      * Events handler for button,
@@ -77,7 +76,7 @@
     Calc.prototype.buttonEventClickDigit = function (text,button) {
         var _this=this;
         var str = text.find('p');
-        button.click(function (e) {
+        button.click(function () {
             if(button.html()==='+'&& (str.html().length<1 || str.css('text-align') === 'right')){
                 alert(_this.config.errorMessage);
             }else {
@@ -94,7 +93,7 @@
             }
         });
         return button;
-    }
+    };
 
     /**
      * Calculation
@@ -108,7 +107,7 @@
             str=str+parseFloat(item);
         });
         return str;
-    }
+    };
 
     /**
      * Adding calculator plugin to jQuery
